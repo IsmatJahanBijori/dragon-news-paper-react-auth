@@ -1,28 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Category from '../../Home/Category/Category';
-
+import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import first from '../../../assets/1.png'
 import second from '../../../assets/2.png'
 import third from '../../../assets/3.png'
-const LeftNav = () => {
-    const [categories, setCategories] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-            .then(data => setCategories(data))
-    }, [])
+const EditorsInsights = () => {
     return (
-        <div>
-            <h4>All Category: {categories.length}</h4>
-            {
-                categories.map(category=><p>
-                    <Link to={`/category/${category.id}`} style={{color: 'black', textDecoration: 'none'}}>{category.name}</Link></p>)
-            }
-            <Row xs={1} md={1} className="g-4 mt-5">
+        <Row xs={1} md={3} className="g-4 mt-5">
             <Col>
                 <Card>
                     <Card.Img variant="top" src={first} />
@@ -63,9 +48,8 @@ const LeftNav = () => {
                 </Card>
             </Col>
         </Row>
-        </div>
-    );
+    )
+
 };
 
-export default LeftNav;
-// Category key={category.id} category={category}
+export default EditorsInsights;
